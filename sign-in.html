@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TuNet | Sign In</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap"
+      rel="stylesheet"
+    />
+    <script src="assets/scripts/tailwind-config.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link rel="stylesheet" href="assets/styles/common.css" />
+    <link rel="stylesheet" href="assets/styles/sign-in.css" />
+  </head>
+  <body class="auth-shell text-on-surface selection:bg-secondary-fixed selection:text-on-secondary-fixed">
+    <main class="mx-auto flex min-h-screen max-w-6xl items-center px-6 py-12 lg:px-10">
+      <section class="grid w-full gap-8 lg:grid-cols-[1.15fr_0.85fr]">
+        <div class="rounded-[2rem] hero-gradient p-8 text-white lg:p-12">
+          <p class="text-sm font-bold uppercase tracking-[0.3em] text-secondary-fixed">Student Access</p>
+          <h1 class="mt-6 text-4xl font-extrabold tracking-tight lg:text-6xl">Sign in and start building your dashboard.</h1>
+          <p class="mt-6 max-w-xl text-lg text-primary-fixed">
+            This static prototype now includes a simple front-end sign-in flow so students can enter a blank dashboard and register courses.
+          </p>
+          <div class="mt-10 grid gap-4 sm:grid-cols-2">
+            <div class="rounded-2xl bg-white/10 p-5 backdrop-blur-md">
+              <p class="text-sm font-semibold">Dashboard access</p>
+              <p class="mt-2 text-sm text-primary-fixed">Protected pages redirect here until a session is created in the browser.</p>
+            </div>
+            <div class="rounded-2xl bg-white/10 p-5 backdrop-blur-md">
+              <p class="text-sm font-semibold">Course registration</p>
+              <p class="mt-2 text-sm text-primary-fixed">After sign-in, students can add and remove their courses from a blank state.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="auth-card rounded-[2rem] bg-white p-8 lg:p-10">
+          <div class="mb-8">
+            <a class="text-sm font-semibold text-secondary hover:text-secondary-container" href="landing.html">Back to landing</a>
+            <h2 class="mt-4 text-3xl font-extrabold text-primary">Welcome back</h2>
+            <p class="mt-2 text-sm text-on-surface-variant">Use any name and email for this front-end prototype sign-in.</p>
+          </div>
+
+          <form class="space-y-5" data-sign-in-form>
+            <label class="block">
+              <span class="mb-2 block text-xs font-bold uppercase tracking-[0.25em] text-on-surface-variant">Full Name</span>
+              <input
+                class="w-full rounded-2xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20"
+                name="name"
+                placeholder="Julian Barrington"
+                type="text"
+              />
+            </label>
+            <label class="block">
+              <span class="mb-2 block text-xs font-bold uppercase tracking-[0.25em] text-on-surface-variant">Email</span>
+              <input
+                class="w-full rounded-2xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20"
+                name="email"
+                placeholder="julian@example.com"
+                type="email"
+              />
+            </label>
+            <label class="block">
+              <span class="mb-2 block text-xs font-bold uppercase tracking-[0.25em] text-on-surface-variant">Password</span>
+              <input
+                class="w-full rounded-2xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20"
+                name="password"
+                placeholder="Prototype only"
+                type="password"
+              />
+            </label>
+            <button class="w-full rounded-2xl bg-primary px-6 py-4 text-base font-bold text-white transition hover:bg-primary-container" type="submit">
+              Sign In
+            </button>
+          </form>
+
+          <p class="mt-5 min-h-6 text-sm text-secondary" data-sign-in-feedback></p>
+
+          <div class="mt-8 rounded-2xl bg-surface-container-low p-5">
+            <p class="text-sm font-bold text-primary">Next step</p>
+            <p class="mt-2 text-sm text-on-surface-variant">
+              For production, replace this browser-only flow with a real backend identity provider and an HTTP-only session strategy.
+            </p>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script src="assets/scripts/common.js"></script>
+    <script src="assets/scripts/sign-in.js"></script>
+  </body>
+</html>

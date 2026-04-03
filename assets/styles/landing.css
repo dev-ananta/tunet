@@ -1,0 +1,22 @@
+.hero-orb {
+  position: absolute;
+  border-radius: 9999px;
+  filter: blur(64px);
+  opacity: 0.45;
+}
+
+.hero-orb-left {
+  top: -3rem;
+  left: -2rem;
+  width: 14rem;
+  height: 14rem;
+  background: rgba(253, 153, 36, 0.16);
+}
+
+.hero-orb-right {
+  right: -4rem;
+  bottom: 2rem;
+  width: 18rem;
+  height: 18rem;
+  background: rgba(0, 56, 113, 0.12);
+}
