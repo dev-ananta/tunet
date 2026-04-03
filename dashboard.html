@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html class="light" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta content="width=device-width, initial-scale=1.0" name="viewport" />
+    <title>TuNet | Student Portal</title>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
+    <script src="assets/scripts/tailwind-config.js"></script>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="assets/styles/common.css" rel="stylesheet" />
+    <link href="assets/styles/dashboard.css" rel="stylesheet" />
+  </head>
+  <body class="flex min-h-screen bg-surface text-on-surface">
+    <aside class="fixed left-0 top-0 hidden h-screen w-64 flex-col bg-slate-50 py-8 md:flex">
+      <div class="mb-8 px-6">
+        <h1 class="text-xl font-bold text-blue-900">TuNet Portal</h1>
+        <p class="mt-1 text-xs uppercase tracking-widest text-slate-500">Academic Excellence</p>
+      </div>
+      <nav class="flex-1 space-y-1">
+        <a class="flex items-center space-x-3 py-3 pl-6 text-slate-500 transition-transform duration-200 hover:translate-x-1 hover:bg-slate-200/50" href="dashboard.html">
+          <span class="material-symbols-outlined">dashboard</span>
+          <span class="text-sm font-medium">Dashboard</span>
+        </a>
+        <a class="flex items-center space-x-3 py-3 pl-6 text-slate-500 transition-transform duration-200 hover:translate-x-1 hover:bg-slate-200/50" href="payment.html">
+          <span class="material-symbols-outlined">payments</span>
+          <span class="text-sm font-medium">Billing</span>
+        </a>
+      </nav>
+      <div class="mt-auto px-6">
+        <button class="w-full rounded-xl bg-primary px-4 py-3 font-bold text-white transition-opacity hover:opacity-90" data-sign-out type="button">
+          Sign Out
+        </button>
+      </div>
+    </aside>
+
+    <main class="min-h-screen flex-1 md:ml-64">
+      <header class="glass-nav sticky top-0 z-30 flex items-center justify-between px-8 py-6">
+        <div>
+          <h2 class="text-2xl font-extrabold tracking-tight text-primary" data-dashboard-welcome>Welcome back</h2>
+          <p class="text-sm text-on-surface-variant">Start with a blank dashboard, then register the courses you want to track.</p>
+        </div>
+        <div class="flex items-center gap-3 border-l border-outline-variant/20 pl-4">
+          <div class="hidden text-right sm:block">
+            <p class="text-sm font-bold" data-session-name>Student Name</p>
+            <p class="text-xs text-on-surface-variant" data-session-email>student@example.com</p>
+          </div>
+          <div class="flex h-10 w-10 items-center justify-center rounded-full bg-primary text-sm font-bold text-white">TN</div>
+        </div>
+      </header>
+
+      <div class="px-8 pb-12">
+        <div class="dashboard-grid mt-8 lg:grid-cols-[0.95fr_1.3fr]">
+          <section class="dashboard-panel bg-primary p-8 text-white">
+            <div class="max-w-md">
+              <p class="text-sm font-bold uppercase tracking-[0.3em] text-secondary-fixed">Student Workspace</p>
+              <h3 class="mt-4 text-3xl font-extrabold">Register your courses</h3>
+              <p class="mt-4 text-sm text-primary-fixed">
+                This dashboard starts intentionally blank. Add each course you want TuNet to track, then expand this into schedules, assignments, and progress later.
+              </p>
+            </div>
+            <div class="mt-8 grid gap-4 sm:grid-cols-3">
+              <div class="rounded-2xl bg-white/10 p-4 backdrop-blur-md">
+                <p class="text-xs uppercase tracking-[0.25em] text-primary-fixed">Courses</p>
+                <p class="mt-3 text-3xl font-black" data-course-count>0</p>
+              </div>
+              <div class="rounded-2xl bg-white/10 p-4 backdrop-blur-md">
+                <p class="text-xs uppercase tracking-[0.25em] text-primary-fixed">Status</p>
+                <p class="mt-3 text-sm font-semibold">Blank dashboard ready</p>
+              </div>
+              <div class="rounded-2xl bg-white/10 p-4 backdrop-blur-md">
+                <p class="text-xs uppercase tracking-[0.25em] text-primary-fixed">Billing</p>
+                <a class="mt-3 inline-block text-sm font-semibold underline" href="payment.html">Open payment page</a>
+              </div>
+            </div>
+          </section>
+
+          <section class="dashboard-panel p-8">
+            <div class="flex items-start justify-between gap-6">
+              <div>
+                <h3 class="text-2xl font-bold text-primary">Course registration</h3>
+                <p class="mt-2 text-sm text-on-surface-variant">Add one course at a time. Everything is stored locally in this prototype.</p>
+              </div>
+              <button class="rounded-full border border-outline-variant/30 px-4 py-2 text-sm font-semibold text-on-surface-variant transition hover:border-primary hover:text-primary" data-sign-out type="button">
+                Sign Out
+              </button>
+            </div>
+
+            <form class="mt-8 grid gap-4 md:grid-cols-3" data-course-form>
+              <label class="block">
+                <span class="mb-2 block text-xs font-bold uppercase tracking-[0.25em] text-on-surface-variant">Course Name</span>
+                <input class="w-full rounded-2xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20" name="courseName" placeholder="AP Biology" type="text" />
+              </label>
+              <label class="block">
+                <span class="mb-2 block text-xs font-bold uppercase tracking-[0.25em] text-on-surface-variant">Level</span>
+                <input class="w-full rounded-2xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20" name="courseLevel" placeholder="Honors, AP, College Prep" type="text" />
+              </label>
+              <label class="block">
+                <span class="mb-2 block text-xs font-bold uppercase tracking-[0.25em] text-on-surface-variant">Term</span>
+                <input class="w-full rounded-2xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20" name="courseTerm" placeholder="Fall 2026" type="text" />
+              </label>
+              <div class="md:col-span-3">
+                <button class="rounded-2xl bg-primary px-6 py-4 text-sm font-bold text-white transition hover:bg-primary-container" type="submit">Add course</button>
+              </div>
+            </form>
+
+            <div class="mt-8 rounded-3xl bg-surface-container-low p-6">
+              <h4 class="text-lg font-bold text-primary">Registered courses</h4>
+              <p class="text-sm text-on-surface-variant">A simple list now, ready for future backend persistence later.</p>
+              <div class="mt-6 rounded-2xl border border-dashed border-outline-variant/30 bg-white/60 p-8 text-center" data-empty-state>
+                <p class="text-lg font-bold text-primary">No courses added yet</p>
+                <p class="mt-2 text-sm text-on-surface-variant">Register your first course to turn this blank dashboard into a working academic workspace.</p>
+              </div>
+              <div class="mt-6 grid gap-4" data-course-list></div>
+            </div>
+          </section>
+        </div>
+      </div>
+
+      <footer class="mt-12 w-full bg-slate-900 py-12 text-white">
+        <div class="mx-auto grid max-w-7xl grid-cols-1 gap-8 px-12 md:grid-cols-3">
+          <div>
+            <h4 class="mb-4 text-lg font-bold">TuNet</h4>
+            <p class="text-sm leading-relaxed text-slate-400">Providing premium academic guidance and curated learning experiences for the scholars of tomorrow.</p>
+          </div>
+          <div>
+            <h5 class="mb-4 font-bold text-orange-500">Quick Links</h5>
+            <ul class="space-y-2">
+              <li><a class="text-sm text-slate-400 transition-colors hover:text-orange-400" href="landing.html">Landing page</a></li>
+              <li><a class="text-sm text-slate-400 transition-colors hover:text-orange-400" href="payment.html">Billing</a></li>
+              <li><a class="text-sm text-slate-400 transition-colors hover:text-orange-400" href="sign-in.html">Sign in</a></li>
+            </ul>
+          </div>
+          <div>
+            <h5 class="mb-4 font-bold text-orange-500">Legal</h5>
+            <p class="text-sm text-slate-400">Prototype only. Replace browser storage with secure server systems before launch.</p>
+            <p class="mt-4 text-xs text-slate-500">© <span data-current-year></span> TuNet Barrington. All rights reserved.</p>
+          </div>
+        </div>
+      </footer>
+    </main>
+
+    <script src="assets/scripts/common.js"></script>
+    <script src="assets/scripts/dashboard.js"></script>
+  </body>
+</html>

@@ -1,0 +1,86 @@
+document.addEventListener("DOMContentLoaded", () => {
+  const session = window.TuNetApp.requireAuth();
+  if (!session) {
+    return;
+  }
+
+  const form = document.querySelector("[data-course-form]");
+  const list = document.querySelector("[data-course-list]");
+  const emptyState = document.querySelector("[data-empty-state]");
+  const count = document.querySelector("[data-course-count]");
+  const welcome = document.querySelector("[data-dashboard-welcome]");
+
+  if (welcome) {
+    welcome.textContent = `${session.name}, build your academic dashboard`;
+  }
+
+  const renderCourses = () => {
+    const courses = window.TuNetApp.getCourses();
+    if (!list || !emptyState || !count) {
+      return;
+    }
+
+    count.textContent = String(courses.length);
+    list.innerHTML = "";
+
+    if (!courses.length) {
+      emptyState.hidden = false;
+      return;
+    }
+
+    emptyState.hidden = true;
+
+    courses.forEach((course, index) => {
+      const item = document.createElement("article");
+      item.className =
+        "rounded-2xl border border-outline-variant/20 bg-surface-container-lowest p-5 shadow-sm";
+      item.innerHTML = `
+        <div class="flex items-start justify-between gap-4">
+          <div>
+            <p class="text-xs font-bold uppercase tracking-[0.2em] text-secondary">${course.term}</p>
+            <h3 class="mt-2 text-xl font-bold text-primary">${course.name}</h3>
+            <p class="mt-1 text-sm text-on-surface-variant">${course.level}</p>
+          </div>
+          <button class="rounded-full border border-outline-variant/30 px-3 py-1 text-xs font-semibold text-on-surface-variant transition hover:border-primary hover:text-primary" data-delete-course="${index}" type="button">
+            Remove
+          </button>
+        </div>
+      `;
+      list.appendChild(item);
+    });
+
+    list.querySelectorAll("[data-delete-course]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const courses = window.TuNetApp.getCourses();
+        const courseIndex = Number(button.getAttribute("data-delete-course"));
+        courses.splice(courseIndex, 1);
+        window.TuNetApp.setCourses(courses);
+        renderCourses();
+      });
+    });
+  };
+
+  if (form) {
+    form.addEventListener("submit", (event) => {
+      event.preventDefault();
+      const formData = new FormData(form);
+      const course = {
+        name: String(formData.get("courseName") || "").trim(),
+        level: String(formData.get("courseLevel") || "").trim(),
+        term: String(formData.get("courseTerm") || "").trim()
+      };
+
+      if (!course.name || !course.level || !course.term) {
+        return;
+      }
+
+      const courses = window.TuNetApp.getCourses();
+      courses.unshift(course);
+      window.TuNetApp.setCourses(courses);
+      form.reset();
+      renderCourses();
+    });
+  }
+
+  renderCourses();
+});

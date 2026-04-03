@@ -1,0 +1,10 @@
+.dashboard-grid {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.dashboard-panel {
+  border-radius: 1.5rem;
+  background: #ffffff;
+  box-shadow: 0 12px 30px rgba(26, 28, 32, 0.06);
+}
