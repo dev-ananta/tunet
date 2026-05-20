@@ -22,8 +22,49 @@
 - Supabase Postgres stores profiles, courses, and registration requests. Run `supabase/schema.sql` before launch.
 - Stripe Checkout handles card collection. Do not add card-number fields to TuNet pages.
 - Rahi, the AI assistant, appears only when the server has `RAHI_API_KEY`.
+- Page copy, image URLs, prices, and placeholders are centralized in `assets/scripts/content-index.js`.
 - If Supabase values are blank, the site falls back to local preview storage only.
 - If `RAHI_API_KEY` is blank or missing, the assistant disappears automatically.
+
+## Content Index System
+
+Most editable site content lives in `assets/scripts/content-index.js` under `window.TuNetContent`.
+
+Each page has its own object, such as `landing`, `signin`, `dashboard`, `payment`, `contact`, `notFound`, and `rahi`. Each object is separated into these categories:
+
+- `images_index`: external media URLs.
+- `headers_index`: main headings, section titles, card titles, and labels that function as headings.
+- `subtext_index`: supporting descriptions and short helper copy.
+- `text_index`: normal body text, button text, nav-like text, list items, and miscellaneous labels.
+- `prices_index`: visible price strings and price suffixes.
+- `placeholders_index`: input and textarea placeholder text.
+
+HTML elements reference content with data attributes:
+
+```html
+<h2 data-content="landing.headers_index.2">Fallback heading</h2>
+<p data-content="landing.subtext_index.3">Fallback subtext</p>
+<img data-content-image="landing.images_index.0" alt="Tutor helping student" />
+<input data-content-placeholder="landing.placeholders_index.0" placeholder="Email" />
+<h1 data-content-html="landing.headers_index.1">Fallback HTML heading</h1>
+```
+
+`assets/scripts/common.js` hydrates these attributes on `DOMContentLoaded`. Always load scripts in this order on pages that use indexed content:
+
+```html
+<script src="assets/scripts/config.js"></script>
+<script src="assets/scripts/content-index.js"></script>
+<script src="assets/scripts/common.js"></script>
+```
+
+Use `data-content-html` only when the indexed value intentionally contains markup, such as the landing hero heading with an inner `<span>`. For normal text, use `data-content` so the value is inserted safely as text.
+
+When adding a new image or text item:
+
+1. Add the value to the correct page/category array in `content-index.js`.
+2. Reference it from the HTML with the matching path, for example `payment.prices_index.2`.
+3. Keep the fallback text inside the HTML element so the page still has readable content if JavaScript fails.
+4. Do not hardcode external image URLs directly in HTML; put them in `images_index`.
 
 ## Rahi API Secret
 
@@ -86,4 +127,5 @@ The assistant route supports OpenAI-compatible chat-completions APIs. For Vercel
 2. Add Vercel environment variables from `README.md`.
 3. Create Stripe Price IDs for the $50 single session and $120 three-credit bundle.
 4. Add `RAHI_API_KEY` as a GitHub Secret and Vercel environment variable if Rahi should appear.
-5. Test sign-up, course registration, profile saving, checkout in Stripe test mode, and Rahi navigation/pricing answers.
+5. Verify all `data-content*` paths resolve after content-index edits.
+6. Test sign-up, course registration, profile saving, checkout in Stripe test mode, and Rahi navigation/pricing answers.
