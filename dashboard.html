@@ -8,6 +8,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet" />
     <script src="assets/scripts/tailwind-config.js"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link href="assets/styles/common.css" rel="stylesheet" />
     <link href="assets/styles/dashboard.css" rel="stylesheet" />
   </head>
@@ -38,7 +39,7 @@
       <header class="glass-nav sticky top-0 z-30 flex items-center justify-between px-8 py-6">
         <div>
           <h2 class="text-2xl font-extrabold tracking-tight text-primary" data-dashboard-welcome>Welcome back</h2>
-          <p class="text-sm text-on-surface-variant">Start with a blank dashboard, then register the courses you want to track.</p>
+          <p class="text-sm text-on-surface-variant">Register courses, save preferences, and move into secure payment when ready.</p>
         </div>
         <div class="flex items-center gap-3 border-l border-outline-variant/20 pl-4">
           <div class="hidden text-right sm:block">
@@ -56,7 +57,7 @@
               <p class="text-sm font-bold uppercase tracking-[0.3em] text-secondary-fixed">Student Workspace</p>
               <h3 class="mt-4 text-3xl font-extrabold">Register your courses</h3>
               <p class="mt-4 text-sm text-primary-fixed">
-                This dashboard starts intentionally blank. Add each course you want TuNet to track, then expand this into schedules, assignments, and progress later.
+                Add each course you want TuNet to track. Your account can be connected to Supabase so preferences and courses persist securely.
               </p>
             </div>
             <div class="mt-8 grid gap-4 sm:grid-cols-3">
@@ -70,7 +71,7 @@
               </div>
               <div class="rounded-2xl bg-white/10 p-4 backdrop-blur-md">
                 <p class="text-xs uppercase tracking-[0.25em] text-primary-fixed">Billing</p>
-                <a class="mt-3 inline-block text-sm font-semibold underline" href="payment.html">Open payment page</a>
+                <a class="mt-3 inline-block text-sm font-semibold underline" href="payment.html">Open secure checkout</a>
               </div>
             </div>
           </section>
@@ -79,7 +80,7 @@
             <div class="flex items-start justify-between gap-6">
               <div>
                 <h3 class="text-2xl font-bold text-primary">Course registration</h3>
-                <p class="mt-2 text-sm text-on-surface-variant">Add one course at a time. Everything is stored locally in this prototype.</p>
+                <p class="mt-2 text-sm text-on-surface-variant">Add one course at a time for tutoring match and scheduling follow-up.</p>
               </div>
               <button class="rounded-full border border-outline-variant/30 px-4 py-2 text-sm font-semibold text-on-surface-variant transition hover:border-primary hover:text-primary" data-sign-out type="button">
                 Sign Out
@@ -106,7 +107,7 @@
 
             <div class="mt-8 rounded-3xl bg-surface-container-low p-6">
               <h4 class="text-lg font-bold text-primary">Registered courses</h4>
-              <p class="text-sm text-on-surface-variant">A simple list now, ready for future backend persistence later.</p>
+              <p class="text-sm text-on-surface-variant">Course details support tutor matching and session planning.</p>
               <div class="mt-6 rounded-2xl border border-dashed border-outline-variant/30 bg-white/60 p-8 text-center" data-empty-state>
                 <p class="text-lg font-bold text-primary">No courses added yet</p>
                 <p class="mt-2 text-sm text-on-surface-variant">Register your first course to turn this blank dashboard into a working academic workspace.</p>
@@ -133,13 +134,14 @@
           </div>
           <div>
             <h5 class="mb-4 font-bold text-orange-500">Legal</h5>
-            <p class="text-sm text-slate-400">Prototype only. Replace browser storage with secure server systems before launch.</p>
+            <p class="text-sm text-slate-400">Secure accounts use Supabase Auth. Payments are completed through Stripe Checkout.</p>
             <p class="mt-4 text-xs text-slate-500">© <span data-current-year></span> TuNet Barrington. All rights reserved.</p>
           </div>
         </div>
       </footer>
     </main>
 
+    <script src="assets/scripts/config.js"></script>
     <script src="assets/scripts/common.js"></script>
     <script src="assets/scripts/dashboard.js"></script>
   </body>

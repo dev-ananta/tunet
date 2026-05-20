@@ -1,5 +1,5 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const session = window.TuNetApp.requireAuth();
+document.addEventListener("DOMContentLoaded", async () => {
+  const session = await window.TuNetApp.requireAuth();
   if (!session) {
     return;
   }
@@ -14,8 +14,16 @@ document.addEventListener("DOMContentLoaded", () => {
     welcome.textContent = `${session.name}, build your academic dashboard`;
   }
 
-  const renderCourses = () => {
-    const courses = window.TuNetApp.getCourses();
+  const escapeHtml = (value) =>
+    String(value || "")
+      .replaceAll("&", "&amp;")
+      .replaceAll("<", "&lt;")
+      .replaceAll(">", "&gt;")
+      .replaceAll('"', "&quot;")
+      .replaceAll("'", "&#039;");
+
+  const renderCourses = async () => {
+    const courses = await window.TuNetApp.fetchCourses();
     if (!list || !emptyState || !count) {
       return;
     }
@@ -37,9 +45,9 @@ document.addEventListener("DOMContentLoaded", () => {
       item.innerHTML = `
         <div class="flex items-start justify-between gap-4">
           <div>
-            <p class="text-xs font-bold uppercase tracking-[0.2em] text-secondary">${course.term}</p>
-            <h3 class="mt-2 text-xl font-bold text-primary">${course.name}</h3>
-            <p class="mt-1 text-sm text-on-surface-variant">${course.level}</p>
+            <p class="text-xs font-bold uppercase tracking-[0.2em] text-secondary">${escapeHtml(course.term)}</p>
+            <h3 class="mt-2 text-xl font-bold text-primary">${escapeHtml(course.name)}</h3>
+            <p class="mt-1 text-sm text-on-surface-variant">${escapeHtml(course.level)}</p>
           </div>
           <button class="rounded-full border border-outline-variant/30 px-3 py-1 text-xs font-semibold text-on-surface-variant transition hover:border-primary hover:text-primary" data-delete-course="${index}" type="button">
             Remove
@@ -50,18 +58,16 @@ document.addEventListener("DOMContentLoaded", () => {
     });
 
     list.querySelectorAll("[data-delete-course]").forEach((button) => {
-      button.addEventListener("click", () => {
-        const courses = window.TuNetApp.getCourses();
+      button.addEventListener("click", async () => {
         const courseIndex = Number(button.getAttribute("data-delete-course"));
-        courses.splice(courseIndex, 1);
-        window.TuNetApp.setCourses(courses);
+        await window.TuNetApp.deleteCourse(courses[courseIndex], courseIndex);
         renderCourses();
       });
     });
   };
 
   if (form) {
-    form.addEventListener("submit", (event) => {
+    form.addEventListener("submit", async (event) => {
       event.preventDefault();
       const formData = new FormData(form);
       const course = {
@@ -74,9 +80,7 @@ document.addEventListener("DOMContentLoaded", () => {
         return;
       }
 
-      const courses = window.TuNetApp.getCourses();
-      courses.unshift(course);
-      window.TuNetApp.setCourses(courses);
+      await window.TuNetApp.addCourse(course);
       form.reset();
       renderCourses();
     });

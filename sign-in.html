@@ -16,6 +16,7 @@
     />
     <script src="assets/scripts/tailwind-config.js"></script>
     <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
     <link rel="stylesheet" href="assets/styles/common.css" />
     <link rel="stylesheet" href="assets/styles/sign-in.css" />
   </head>
@@ -24,18 +25,18 @@
       <section class="grid w-full gap-8 lg:grid-cols-[1.15fr_0.85fr]">
         <div class="rounded-[2rem] hero-gradient p-8 text-white lg:p-12">
           <p class="text-sm font-bold uppercase tracking-[0.3em] text-secondary-fixed">Student Access</p>
-          <h1 class="mt-6 text-4xl font-extrabold tracking-tight lg:text-6xl">Sign in and start building your dashboard.</h1>
-          <p class="mt-6 max-w-xl text-lg text-primary-fixed">
-            This static prototype now includes a simple front-end sign-in flow so students can enter a blank dashboard and register courses.
+            <h1 class="mt-6 text-4xl font-extrabold tracking-tight lg:text-6xl">Register securely and start booking tutoring.</h1>
+            <p class="mt-6 max-w-xl text-lg text-primary-fixed">
+            TuNet uses Supabase Auth for protected accounts and Stripe Checkout for payment, so families never enter card data into this site.
           </p>
           <div class="mt-10 grid gap-4 sm:grid-cols-2">
             <div class="rounded-2xl bg-white/10 p-5 backdrop-blur-md">
               <p class="text-sm font-semibold">Dashboard access</p>
-              <p class="mt-2 text-sm text-primary-fixed">Protected pages redirect here until a session is created in the browser.</p>
+              <p class="mt-2 text-sm text-primary-fixed">Email/password accounts are verified by Supabase before dashboard access.</p>
             </div>
             <div class="rounded-2xl bg-white/10 p-5 backdrop-blur-md">
               <p class="text-sm font-semibold">Course registration</p>
-              <p class="mt-2 text-sm text-primary-fixed">After sign-in, students can add and remove their courses from a blank state.</p>
+              <p class="mt-2 text-sm text-primary-fixed">Save student preferences, tutoring package, and course details for follow-up.</p>
             </div>
           </div>
         </div>
@@ -44,7 +45,7 @@
           <div class="mb-8">
             <a class="text-sm font-semibold text-secondary hover:text-secondary-container" href="landing.html">Back to landing</a>
             <h2 class="mt-4 text-3xl font-extrabold text-primary">Welcome back</h2>
-            <p class="mt-2 text-sm text-on-surface-variant">Use any name and email for this front-end prototype sign-in.</p>
+            <p class="mt-2 text-sm text-on-surface-variant">Create a parent/student account or sign in with an existing one.</p>
           </div>
 
           <form class="space-y-5" data-sign-in-form>
@@ -76,7 +77,7 @@
               />
             </label>
             <button class="w-full rounded-2xl bg-primary px-6 py-4 text-base font-bold text-white transition hover:bg-primary-container" type="submit">
-              Sign In
+              Continue Securely
             </button>
           </form>
 
@@ -85,13 +86,14 @@
           <div class="mt-8 rounded-2xl bg-surface-container-low p-5">
             <p class="text-sm font-bold text-primary">Next step</p>
             <p class="mt-2 text-sm text-on-surface-variant">
-              For production, replace this browser-only flow with a real backend identity provider and an HTTP-only session strategy.
+              Payment is completed through Stripe Checkout. TuNet stores tutoring preferences, never raw card numbers.
             </p>
           </div>
         </div>
       </section>
     </main>
 
+    <script src="assets/scripts/config.js"></script>
     <script src="assets/scripts/common.js"></script>
     <script src="assets/scripts/sign-in.js"></script>
   </body>

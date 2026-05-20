@@ -4,8 +4,8 @@
 
 1. Push this repository to GitHub.
 2. In Vercel, choose `Add New... -> Project` and import the GitHub repository.
-3. Keep the framework preset as `Other` because this is currently a static site.
-4. Deploy. Vercel will serve the root files, and `index.html` will route visitors to `landing.html`.
+3. Keep the framework preset as `Other`. Vercel will serve the static pages and the `/api/*` serverless functions.
+4. Deploy. `index.html` routes visitors to `landing.html`.
 
 ## Connecting A Custom Domain
 
@@ -16,11 +16,12 @@
 5. Wait for Vercel to verify the records and issue TLS certificates automatically.
 6. If you want both apex and `www`, set one as the primary domain and redirect the other.
 
-## Current Prototype Limits
+## Current Integration Notes
 
-- The sign-in flow is front-end only and stores session data in `localStorage`.
-- The dashboard course list is also stored in the browser.
-- Do not collect real customer passwords, payment data, or FERPA-sensitive student records with this prototype.
+- Supabase Auth backs real student/parent accounts once `assets/scripts/config.js` is populated.
+- Supabase Postgres stores profiles, courses, and registration requests. Run `supabase/schema.sql` before launch.
+- Stripe Checkout handles card collection. Do not add card-number fields to TuNet pages.
+- If Supabase values are blank, the site falls back to local preview storage only.
 
 ## Hardening The Future Backend And Database
 
@@ -60,11 +61,9 @@
 - Document retention and deletion policies before launch.
 - Review FERPA, state privacy law, and payment compliance obligations with legal counsel before production use.
 
-## Recommended Next Build Step
+## Launch Checklist
 
-Replace the browser-only auth and storage with:
-
-1. A real auth provider.
-2. A server API layer.
-3. A managed database with row-level or application-level authorization.
-4. Stripe for payment collection.
+1. Add Supabase public URL and anon key to `assets/scripts/config.js`.
+2. Add Vercel environment variables from `README.md`.
+3. Create Stripe Price IDs for the $50 single session and $120 three-credit bundle.
+4. Test sign-up, course registration, profile saving, and checkout in Stripe test mode.

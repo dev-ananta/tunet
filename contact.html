@@ -16,7 +16,7 @@
         <a class="text-2xl font-extrabold tracking-tighter text-blue-900" href="landing.html">TuNet</a>
         <div class="hidden items-center gap-8 text-lg tracking-tight md:flex">
           <a class="text-slate-600 transition-colors duration-300 hover:text-orange-600" href="landing.html#about">About</a>
-          <a class="text-slate-600 transition-colors duration-300 hover:text-orange-600" href="landing.html#subjects">Tutors</a>
+          <a class="text-slate-600 transition-colors duration-300 hover:text-orange-600" href="landing.html#tutors">Tutors</a>
           <a class="text-slate-600 transition-colors duration-300 hover:text-orange-600" href="landing.html#plans">Pricing</a>
           <a class="text-slate-600 transition-colors duration-300 hover:text-orange-600" href="sign-in.html">Login</a>
           <a class="rounded-xl bg-primary px-6 py-2 text-white transition-all duration-300 hover:bg-primary-container" href="sign-in.html">
@@ -43,7 +43,16 @@
                 </div>
                 <div>
                   <h3 class="font-bold text-primary">Email Us</h3>
-                  <p class="text-on-surface-variant">hello@tunet.local</p>
+                  <p class="text-on-surface-variant">tunettutoring@gmail.com</p>
+                </div>
+              </div>
+              <div class="flex gap-4">
+                <div class="flex h-12 w-12 items-center justify-center rounded-2xl bg-primary/5 text-primary">
+                  <span class="material-symbols-outlined">call</span>
+                </div>
+                <div>
+                  <h3 class="font-bold text-primary">Call Us</h3>
+                  <p class="text-on-surface-variant">(224) 451-5920</p>
                 </div>
               </div>
               <div class="flex gap-4">
@@ -63,16 +72,16 @@
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <label class="block">
                   <span class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Name</span>
-                  <input type="text" class="w-full rounded-xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20" placeholder="Julian Barrington" required />
+                  <input name="name" type="text" class="w-full rounded-xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20" placeholder="Julian Barrington" required />
                 </label>
                 <label class="block">
                   <span class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Email</span>
-                  <input type="email" class="w-full rounded-xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20" placeholder="julian@example.com" required />
+                  <input name="email" type="email" class="w-full rounded-xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20" placeholder="julian@example.com" required />
                 </label>
               </div>
               <label class="block">
                 <span class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Subject</span>
-                <select class="w-full rounded-xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20">
+                <select name="subject" class="w-full rounded-xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20">
                   <option>General Inquiry</option>
                   <option>Tutoring Plans</option>
                   <option>Become a Tutor</option>
@@ -81,7 +90,7 @@
               </label>
               <label class="block">
                 <span class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Message</span>
-                <textarea rows="4" class="w-full rounded-xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20" placeholder="Tell us how we can help..."></textarea>
+                <textarea name="message" rows="4" class="w-full rounded-xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20" placeholder="Tell us how we can help..."></textarea>
               </label>
               <button type="submit" class="w-full rounded-xl bg-primary py-4 font-bold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-container">
                 Send Message
@@ -101,12 +110,37 @@
       </div>
     </footer>
 
+    <script src="assets/scripts/config.js"></script>
     <script src="assets/scripts/common.js"></script>
     <script>
-      document.getElementById('contact-form').addEventListener('submit', function(e) {
-        e.preventDefault();
-        this.reset();
-        document.getElementById('contact-feedback').classList.remove('hidden');
+      document.getElementById("contact-form").addEventListener("submit", async function (event) {
+        event.preventDefault();
+        const feedback = document.getElementById("contact-feedback");
+        const formData = new FormData(this);
+        feedback.classList.remove("hidden");
+        feedback.textContent = "Sending...";
+
+        try {
+          const response = await fetch((window.TuNetConfig || {}).registrationEndpoint || "/api/register-interest", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              name: formData.get("name"),
+              email: formData.get("email"),
+              packagePreference: formData.get("subject"),
+              message: formData.get("message")
+            })
+          });
+
+          if (!response.ok) {
+            throw new Error("Registration storage is not configured yet.");
+          }
+
+          feedback.textContent = "Message sent! We will be in touch shortly.";
+          this.reset();
+        } catch (error) {
+          feedback.textContent = "Message captured in this preview. Connect Supabase to store it live.";
+        }
       });
     </script>
   </body>
