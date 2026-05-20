@@ -21,7 +21,26 @@
 - Supabase Auth backs real student/parent accounts once `assets/scripts/config.js` is populated.
 - Supabase Postgres stores profiles, courses, and registration requests. Run `supabase/schema.sql` before launch.
 - Stripe Checkout handles card collection. Do not add card-number fields to TuNet pages.
+- Rahi, the AI assistant, appears only when the server has `RAHI_API_KEY`.
 - If Supabase values are blank, the site falls back to local preview storage only.
+- If `RAHI_API_KEY` is blank or missing, the assistant disappears automatically.
+
+## Rahi API Secret
+
+Use a GitHub Secret for the assistant key. Never put the key in `assets/scripts/config.js` or any HTML file.
+
+```sh
+gh secret set RAHI_API_KEY
+```
+
+Optional provider settings:
+
+```sh
+gh secret set RAHI_API_BASE_URL
+gh secret set RAHI_MODEL
+```
+
+The assistant route supports OpenAI-compatible chat-completions APIs. For Vercel deployments, mirror these as Vercel environment variables too, because the serverless function reads from runtime env vars.
 
 ## Hardening The Future Backend And Database
 
@@ -66,4 +85,5 @@
 1. Add Supabase public URL and anon key to `assets/scripts/config.js`.
 2. Add Vercel environment variables from `README.md`.
 3. Create Stripe Price IDs for the $50 single session and $120 three-credit bundle.
-4. Test sign-up, course registration, profile saving, and checkout in Stripe test mode.
+4. Add `RAHI_API_KEY` as a GitHub Secret and Vercel environment variable if Rahi should appear.
+5. Test sign-up, course registration, profile saving, checkout in Stripe test mode, and Rahi navigation/pricing answers.

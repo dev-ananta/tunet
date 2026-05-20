@@ -158,5 +158,19 @@ window.TuNetContent = {
     text_index: ["Back to TuNet Home"],
     prices_index: [],
     placeholders_index: []
+  },
+  rahi: {
+    images_index: [],
+    headers_index: ["Rahi"],
+    subtext_index: ["TuNet assistant"],
+    text_index: [
+      "Ask about pricing or where to go next.",
+      "Hi, I am Rahi. I can help you find pages and calculate TuNet session pricing.",
+      "Open Rahi assistant",
+      "Close",
+      "Send"
+    ],
+    prices_index: ["$50 single hour", "$120 three-credit bundle"],
+    placeholders_index: ["Ask Rahi about pricing or navigation..."]
   }
 };

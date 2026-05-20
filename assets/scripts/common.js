@@ -262,12 +262,121 @@ const TuNetApp = (() => {
     });
   };
 
+  const createRahiAssistant = async () => {
+    const endpoint = config.rahiEndpoint || "/api/rahi-assistant";
+    let status;
+
+    try {
+      status = await fetch(endpoint, { method: "GET" }).then((response) => response.json());
+    } catch {
+      return;
+    }
+
+    if (!status?.available) {
+      return;
+    }
+
+    const content = window.TuNetContent?.rahi || {};
+    const shell = document.createElement("section");
+    shell.className = "rahi-assistant";
+    shell.setAttribute("aria-live", "polite");
+    shell.innerHTML = `
+      <button class="rahi-launcher" type="button" aria-label="${content.text_index?.[2] || "Open Rahi assistant"}">
+        <span class="material-symbols-outlined">auto_awesome</span>
+        <span>${content.headers_index?.[0] || "Rahi"}</span>
+      </button>
+      <div class="rahi-panel" hidden>
+        <div class="rahi-panel-header">
+          <div>
+            <p class="rahi-title">${content.headers_index?.[0] || "Rahi"}</p>
+            <p class="rahi-kicker">${content.subtext_index?.[0] || "TuNet assistant"}</p>
+          </div>
+          <button class="rahi-icon-button" type="button" data-rahi-close aria-label="${content.text_index?.[3] || "Close"}">
+            <span class="material-symbols-outlined">close</span>
+          </button>
+        </div>
+        <div class="rahi-messages" data-rahi-messages>
+          <p class="rahi-message rahi-message-assistant">${content.text_index?.[1] || "Hi, I am Rahi. I can help with TuNet."}</p>
+        </div>
+        <form class="rahi-form" data-rahi-form>
+          <input name="message" autocomplete="off" placeholder="${content.placeholders_index?.[0] || "Ask Rahi..."}" />
+          <button type="submit" aria-label="${content.text_index?.[4] || "Send"}">
+            <span class="material-symbols-outlined">send</span>
+          </button>
+        </form>
+      </div>
+    `;
+
+    document.body.appendChild(shell);
+
+    const launcher = shell.querySelector(".rahi-launcher");
+    const panel = shell.querySelector(".rahi-panel");
+    const closeButton = shell.querySelector("[data-rahi-close]");
+    const form = shell.querySelector("[data-rahi-form]");
+    const messages = shell.querySelector("[data-rahi-messages]");
+
+    const appendMessage = (text, type) => {
+      const message = document.createElement("p");
+      message.className = `rahi-message rahi-message-${type}`;
+      message.textContent = text;
+      messages.appendChild(message);
+      messages.scrollTop = messages.scrollHeight;
+    };
+
+    launcher.addEventListener("click", () => {
+      panel.hidden = !panel.hidden;
+    });
+
+    closeButton.addEventListener("click", () => {
+      panel.hidden = true;
+    });
+
+    form.addEventListener("submit", async (event) => {
+      event.preventDefault();
+      const input = form.elements.message;
+      const message = String(input.value || "").trim();
+      if (!message) {
+        return;
+      }
+
+      appendMessage(message, "user");
+      input.value = "";
+      input.disabled = true;
+
+      try {
+        const response = await fetch(endpoint, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({ message, path: window.location.pathname })
+        });
+        const payload = await response.json();
+
+        if (!response.ok) {
+          throw new Error(payload.error || "Rahi is unavailable right now.");
+        }
+
+        appendMessage(payload.reply, "assistant");
+        if (payload.action?.type === "navigate" && payload.action.target) {
+          window.setTimeout(() => {
+            window.location.href = payload.action.target;
+          }, 700);
+        }
+      } catch (error) {
+        appendMessage(error.message, "assistant");
+      } finally {
+        input.disabled = false;
+        input.focus();
+      }
+    });
+  };
+
   document.addEventListener("DOMContentLoaded", () => {
     hydrateContentIndex();
     fillSessionFields();
     wireSignOut();
     setCurrentYear();
     highlightActiveNavLink();
+    createRahiAssistant();
   });
 
   return {
