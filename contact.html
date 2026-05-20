@@ -30,9 +30,9 @@
       <div class="mx-auto max-w-7xl px-8">
         <div class="grid grid-cols-1 lg:grid-cols-2 gap-16">
           <div>
-            <span class="mb-4 inline-block rounded-full bg-secondary-fixed px-3 py-1 text-xs font-bold tracking-widest text-secondary uppercase">Get in Touch</span>
-            <h1 class="text-5xl font-extrabold tracking-tight text-primary mb-8">Let's Discuss Your Academic Path</h1>
-            <p class="text-lg text-on-surface-variant mb-12">
+            <span class="mb-4 inline-block rounded-full bg-secondary-fixed px-3 py-1 text-xs font-bold tracking-widest text-secondary uppercase" data-content="contact.headers_index.0">Get in Touch</span>
+            <h1 class="text-5xl font-extrabold tracking-tight text-primary mb-8" data-content="contact.headers_index.1">Let's Discuss Your Academic Path</h1>
+            <p class="text-lg text-on-surface-variant mb-12" data-content="contact.subtext_index.0">
               Have questions about our tutoring programs or need help matching your student with the perfect curator? Our team in Barrington is ready to help.
             </p>
             
@@ -42,8 +42,8 @@
                   <span class="material-symbols-outlined">mail</span>
                 </div>
                 <div>
-                  <h3 class="font-bold text-primary">Email Us</h3>
-                  <p class="text-on-surface-variant">tunettutoring@gmail.com</p>
+                  <h3 class="font-bold text-primary" data-content="contact.headers_index.2">Email Us</h3>
+                  <p class="text-on-surface-variant" data-content="contact.subtext_index.1">tunettutoring@gmail.com</p>
                 </div>
               </div>
               <div class="flex gap-4">
@@ -51,8 +51,8 @@
                   <span class="material-symbols-outlined">call</span>
                 </div>
                 <div>
-                  <h3 class="font-bold text-primary">Call Us</h3>
-                  <p class="text-on-surface-variant">(224) 451-5920</p>
+                  <h3 class="font-bold text-primary" data-content="contact.headers_index.3">Call Us</h3>
+                  <p class="text-on-surface-variant" data-content="contact.subtext_index.2">(224) 451-5920</p>
                 </div>
               </div>
               <div class="flex gap-4">
@@ -60,8 +60,8 @@
                   <span class="material-symbols-outlined">location_on</span>
                 </div>
                 <div>
-                  <h3 class="font-bold text-primary">Local Office</h3>
-                  <p class="text-on-surface-variant">Barrington, IL 60010</p>
+                  <h3 class="font-bold text-primary" data-content="contact.headers_index.4">Local Office</h3>
+                  <p class="text-on-surface-variant" data-content="contact.subtext_index.3">Barrington, IL 60010</p>
                 </div>
               </div>
             </div>
@@ -71,33 +71,33 @@
             <form class="space-y-6" id="contact-form">
               <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                 <label class="block">
-                  <span class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Name</span>
-                  <input name="name" type="text" class="w-full rounded-xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20" placeholder="Julian Barrington" required />
+                  <span class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant" data-content="contact.text_index.0">Name</span>
+                  <input name="name" type="text" class="w-full rounded-xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20" data-content-placeholder="contact.placeholders_index.0" placeholder="Julian Barrington" required />
                 </label>
                 <label class="block">
-                  <span class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Email</span>
-                  <input name="email" type="email" class="w-full rounded-xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20" placeholder="julian@example.com" required />
+                  <span class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant" data-content="contact.text_index.1">Email</span>
+                  <input name="email" type="email" class="w-full rounded-xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20" data-content-placeholder="contact.placeholders_index.1" placeholder="julian@example.com" required />
                 </label>
               </div>
               <label class="block">
-                <span class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Subject</span>
+                <span class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant" data-content="contact.text_index.2">Subject</span>
                 <select name="subject" class="w-full rounded-xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20">
-                  <option>General Inquiry</option>
-                  <option>Tutoring Plans</option>
-                  <option>Become a Tutor</option>
-                  <option>Billing Support</option>
+                  <option data-content="contact.text_index.3">General Inquiry</option>
+                  <option data-content="contact.text_index.4">Tutoring Plans</option>
+                  <option data-content="contact.text_index.5">Become a Tutor</option>
+                  <option data-content="contact.text_index.6">Billing Support</option>
                 </select>
               </label>
               <label class="block">
-                <span class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Message</span>
-                <textarea name="message" rows="4" class="w-full rounded-xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20" placeholder="Tell us how we can help..."></textarea>
+                <span class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant" data-content="contact.text_index.7">Message</span>
+                <textarea name="message" rows="4" class="w-full rounded-xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20" data-content-placeholder="contact.placeholders_index.2" placeholder="Tell us how we can help..."></textarea>
               </label>
               <button type="submit" class="w-full rounded-xl bg-primary py-4 font-bold text-white shadow-lg shadow-primary/20 transition-all hover:bg-primary-container">
-                Send Message
+                <span data-content="contact.text_index.8">Send Message</span>
               </button>
             </form>
             <div class="mt-6 text-center text-sm text-secondary hidden" id="contact-feedback">
-              Message sent! We will be in touch shortly.
+              <span data-content="contact.text_index.9">Message sent! We will be in touch shortly.</span>
             </div>
           </div>
         </div>
@@ -111,6 +111,7 @@
     </footer>
 
     <script src="assets/scripts/config.js"></script>
+    <script src="assets/scripts/content-index.js"></script>
     <script src="assets/scripts/common.js"></script>
     <script>
       document.getElementById("contact-form").addEventListener("submit", async function (event) {
@@ -123,7 +124,7 @@
         try {
           const response = await fetch((window.TuNetConfig || {}).registrationEndpoint || "/api/register-interest", {
             method: "POST",
-            headers: { "Content-Type": "application/json" },
+            headers_index: { "Content-Type": "application/json" },
             body: JSON.stringify({
               name: formData.get("name"),
               email: formData.get("email"),

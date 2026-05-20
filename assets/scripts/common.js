@@ -227,7 +227,43 @@ const TuNetApp = (() => {
     });
   };
 
+  const getContentValue = (path) => {
+    const parts = String(path || "").split(".");
+    return parts.reduce((value, part) => value?.[part], window.TuNetContent);
+  };
+
+  const hydrateContentIndex = () => {
+    document.querySelectorAll("[data-content]").forEach((element) => {
+      const value = getContentValue(element.getAttribute("data-content"));
+      if (value !== undefined) {
+        element.textContent = value;
+      }
+    });
+
+    document.querySelectorAll("[data-content-html]").forEach((element) => {
+      const value = getContentValue(element.getAttribute("data-content-html"));
+      if (value !== undefined) {
+        element.innerHTML = value;
+      }
+    });
+
+    document.querySelectorAll("[data-content-placeholder]").forEach((element) => {
+      const value = getContentValue(element.getAttribute("data-content-placeholder"));
+      if (value !== undefined) {
+        element.setAttribute("placeholder", value);
+      }
+    });
+
+    document.querySelectorAll("[data-content-image]").forEach((element) => {
+      const value = getContentValue(element.getAttribute("data-content-image"));
+      if (value !== undefined) {
+        element.setAttribute("src", value);
+      }
+    });
+  };
+
   document.addEventListener("DOMContentLoaded", () => {
+    hydrateContentIndex();
     fillSessionFields();
     wireSignOut();
     setCurrentYear();
@@ -248,7 +284,8 @@ const TuNetApp = (() => {
     deleteCourse,
     requireAuth,
     supabaseClient,
-    hasSupabaseConfig
+    hasSupabaseConfig,
+    hydrateContentIndex
   };
 })();
 

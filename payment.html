@@ -34,8 +34,8 @@
 
     <main class="ml-64 min-h-screen p-8 lg:p-12">
       <header class="mb-12">
-        <h2 class="mb-2 text-4xl font-extrabold tracking-tight text-primary">Billing &amp; Academic Plans</h2>
-        <p class="text-on-surface-variant">Choose a TuNet package and pay through Stripe Checkout. Card data is handled by Stripe, not stored by TuNet.</p>
+        <h2 class="mb-2 text-4xl font-extrabold tracking-tight text-primary" data-content="payment.headers_index.1">Billing &amp; Academic Plans</h2>
+        <p class="text-on-surface-variant" data-content="payment.subtext_index.0">Choose a TuNet package and pay through Stripe Checkout. Card data is handled by Stripe, not stored by TuNet.</p>
       </header>
 
       <section class="mb-16">
@@ -44,38 +44,38 @@
             <button class="rounded-full bg-white px-6 py-2 text-sm font-bold text-primary shadow-sm">Monthly</button>
             <button class="px-6 py-2 text-sm font-bold text-on-surface-variant transition-colors hover:text-primary">Semester <span class="ml-1 text-xs text-secondary">Save 15%</span></button>
           </div>
-          <p class="mt-4 text-sm font-semibold text-secondary" data-plan-status>Select a plan to open secure checkout.</p>
+          <p class="mt-4 text-sm font-semibold text-secondary" data-plan-status data-content="payment.subtext_index.1">Select a plan to open secure checkout.</p>
         </div>
 
         <div class="grid grid-cols-1 gap-8 md:grid-cols-3">
           <div class="plan-card flex flex-col rounded-xl bg-surface-container-lowest p-8">
             <div class="mb-6">
-              <span class="text-xs font-bold uppercase tracking-widest text-secondary">Consultation</span>
-              <h3 class="mt-2 text-2xl font-bold">Initial Tutor Session</h3>
-              <p class="mt-2 text-sm text-on-surface-variant">A focused 1-hour session to meet, diagnose needs, and plan next steps.</p>
+              <span class="text-xs font-bold uppercase tracking-widest text-secondary" data-content="payment.text_index.3">Consultation</span>
+              <h3 class="mt-2 text-2xl font-bold" data-content="payment.headers_index.2">Initial Tutor Session</h3>
+              <p class="mt-2 text-sm text-on-surface-variant" data-content="payment.subtext_index.2">A focused 1-hour session to meet, diagnose needs, and plan next steps.</p>
             </div>
             <div class="mb-8 flex items-baseline gap-1">
-              <span class="text-4xl font-extrabold text-primary">$50</span>
-              <span class="text-sm text-on-surface-variant">/session</span>
+              <span class="text-4xl font-extrabold text-primary" data-content="payment.prices_index.0">$50</span>
+              <span class="text-sm text-on-surface-variant" data-content="payment.prices_index.1">/session</span>
             </div>
             <ul class="mb-10 flex-grow space-y-4">
               <li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-lg text-secondary">check_circle</span>Subject and goal review</li>
               <li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-lg text-secondary">check_circle</span>Tutor fit conversation</li>
               <li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-lg text-secondary">check_circle</span>Next-step recommendation</li>
             </ul>
-            <button class="w-full rounded-xl border-2 border-primary py-4 font-bold text-primary transition-all hover:bg-primary hover:text-white" data-plan-button="Initial Tutor Session" data-price-key="initial" type="button">Pay Securely</button>
+            <button class="w-full rounded-xl border-2 border-primary py-4 font-bold text-primary transition-all hover:bg-primary hover:text-white" data-plan-button="Initial Tutor Session" data-price-key="initial" data-content="payment.text_index.7" type="button">Pay Securely</button>
           </div>
 
           <div class="plan-card relative flex flex-col overflow-hidden rounded-xl bg-[linear-gradient(135deg,#003871,#1b4f91)] p-8 text-white">
             <div class="absolute right-4 top-4 rounded-full bg-secondary-container px-3 py-1 text-[10px] font-black uppercase text-on-secondary-fixed">Most Popular</div>
             <div class="mb-6">
-              <span class="text-xs font-bold uppercase tracking-widest text-secondary-fixed">Core Package</span>
-              <h3 class="mt-2 text-2xl font-bold">TuNet 3-Credit Bundle</h3>
-              <p class="mt-2 text-sm text-on-primary-container">The best-value live-site package for consistent academic growth.</p>
+              <span class="text-xs font-bold uppercase tracking-widest text-secondary-fixed" data-content="payment.text_index.8">Core Package</span>
+              <h3 class="mt-2 text-2xl font-bold" data-content="payment.headers_index.3">TuNet 3-Credit Bundle</h3>
+              <p class="mt-2 text-sm text-on-primary-container" data-content="payment.subtext_index.3">The best-value live-site package for consistent academic growth.</p>
             </div>
             <div class="mb-8 flex items-baseline gap-1">
-              <span class="text-4xl font-extrabold">$120</span>
-              <span class="text-sm text-on-primary-container">/3 hours</span>
+              <span class="text-4xl font-extrabold" data-content="payment.prices_index.2">$120</span>
+              <span class="text-sm text-on-primary-container" data-content="payment.prices_index.3">/3 hours</span>
             </div>
             <ul class="mb-10 flex-grow space-y-4">
               <li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-lg text-secondary-fixed">stars</span>3 credit hours</li>
@@ -83,25 +83,25 @@
               <li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-lg text-secondary-fixed">stars</span>Simple parent/student dashboard</li>
               <li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-lg text-secondary-fixed">stars</span>Secure checkout confirmation</li>
             </ul>
-            <button class="w-full rounded-xl bg-secondary py-4 font-bold text-white shadow-lg transition-all hover:brightness-110" data-plan-button="3-Credit Bundle" data-price-key="package" type="button">Start Checkout</button>
+            <button class="w-full rounded-xl bg-secondary py-4 font-bold text-white shadow-lg transition-all hover:brightness-110" data-plan-button="3-Credit Bundle" data-price-key="package" data-content="payment.text_index.13" type="button">Start Checkout</button>
           </div>
 
           <div class="plan-card flex flex-col rounded-xl bg-surface-container-lowest p-8">
             <div class="mb-6">
-              <span class="text-xs font-bold uppercase tracking-widest text-secondary">Custom Support</span>
-              <h3 class="mt-2 text-2xl font-bold">Custom Plan</h3>
-              <p class="mt-2 text-sm text-on-surface-variant">For families who want a custom cadence, multiple subjects, or group planning.</p>
+              <span class="text-xs font-bold uppercase tracking-widest text-secondary" data-content="payment.text_index.14">Custom Support</span>
+              <h3 class="mt-2 text-2xl font-bold" data-content="payment.headers_index.4">Custom Plan</h3>
+              <p class="mt-2 text-sm text-on-surface-variant" data-content="payment.subtext_index.4">For families who want a custom cadence, multiple subjects, or group planning.</p>
             </div>
             <div class="mb-8 flex items-baseline gap-1">
-              <span class="text-4xl font-extrabold text-primary">Contact</span>
-              <span class="text-sm text-on-surface-variant">TuNet</span>
+              <span class="text-4xl font-extrabold text-primary" data-content="payment.prices_index.4">Contact</span>
+              <span class="text-sm text-on-surface-variant" data-content="payment.prices_index.5">TuNet</span>
             </div>
             <ul class="mb-10 flex-grow space-y-4">
               <li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-lg text-secondary">check_circle</span>Subject mix planning</li>
               <li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-lg text-secondary">check_circle</span>Multiple student support</li>
               <li class="flex items-center gap-3 text-sm"><span class="material-symbols-outlined text-lg text-secondary">check_circle</span>Concierge scheduling</li>
             </ul>
-            <a class="block w-full rounded-xl border-2 border-primary py-4 text-center font-bold text-primary transition-all hover:bg-primary hover:text-white" href="contact.html">Contact TuNet</a>
+            <a class="block w-full rounded-xl border-2 border-primary py-4 text-center font-bold text-primary transition-all hover:bg-primary hover:text-white" href="contact.html" data-content="payment.text_index.18">Contact TuNet</a>
           </div>
         </div>
       </section>
@@ -110,34 +110,34 @@
         <form class="space-y-6 rounded-xl bg-surface-container-low p-8" data-billing-form>
           <h4 class="flex items-center gap-2 text-xl font-bold text-primary">
             <span class="material-symbols-outlined">shield_locked</span>
-            Secure Registration Profile
+            <span data-content="payment.headers_index.5">Secure Registration Profile</span>
           </h4>
           <div>
-            <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Parent / Guardian Name</label>
-            <input class="w-full rounded-lg border-none bg-surface-container-lowest p-4 placeholder:text-outline-variant focus:ring-2 focus:ring-primary/10" name="name" placeholder="Julian Barrington" type="text" />
+            <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant" data-content="payment.text_index.19">Parent / Guardian Name</label>
+            <input class="w-full rounded-lg border-none bg-surface-container-lowest p-4 placeholder:text-outline-variant focus:ring-2 focus:ring-primary/10" name="name" data-content-placeholder="payment.placeholders_index.0" placeholder="Julian Barrington" type="text" />
           </div>
           <div class="grid grid-cols-2 gap-4">
             <div>
-              <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Student Name</label>
-              <input class="w-full rounded-lg border-none bg-surface-container-lowest p-4 focus:ring-2 focus:ring-primary/10" name="studentName" placeholder="Student name" type="text" />
+              <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant" data-content="payment.text_index.20">Student Name</label>
+              <input class="w-full rounded-lg border-none bg-surface-container-lowest p-4 focus:ring-2 focus:ring-primary/10" name="studentName" data-content-placeholder="payment.placeholders_index.1" placeholder="Student name" type="text" />
             </div>
             <div>
-              <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Preferred Tutor</label>
-              <input class="w-full rounded-lg border-none bg-surface-container-lowest p-4 focus:ring-2 focus:ring-primary/10" name="preferredTutor" placeholder="Any tutor or name" type="text" />
+              <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant" data-content="payment.text_index.21">Preferred Tutor</label>
+              <input class="w-full rounded-lg border-none bg-surface-container-lowest p-4 focus:ring-2 focus:ring-primary/10" name="preferredTutor" data-content-placeholder="payment.placeholders_index.2" placeholder="Any tutor or name" type="text" />
             </div>
           </div>
           <div class="space-y-6 rounded-xl bg-surface-container-low p-0">
             <h4 class="flex items-center gap-2 text-xl font-bold text-primary">
               <span class="material-symbols-outlined">schedule</span>
-              Tutoring Preferences
+              <span data-content="payment.headers_index.6">Tutoring Preferences</span>
             </h4>
             <div>
-              <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Preferred Time</label>
-              <input class="w-full rounded-lg border-none bg-surface-container-lowest p-4 focus:ring-2 focus:ring-primary/10" name="preferredTime" placeholder="Weekdays after 5 PM" type="text" />
+              <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant" data-content="payment.text_index.22">Preferred Time</label>
+              <input class="w-full rounded-lg border-none bg-surface-container-lowest p-4 focus:ring-2 focus:ring-primary/10" name="preferredTime" data-content-placeholder="payment.placeholders_index.3" placeholder="Weekdays after 5 PM" type="text" />
             </div>
             <div class="grid grid-cols-2 gap-4">
               <div>
-                <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Package</label>
+                <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant" data-content="payment.text_index.23">Package</label>
                 <select class="w-full rounded-lg border-none bg-surface-container-lowest p-4 focus:ring-2 focus:ring-primary/10" name="packagePreference">
                   <option>Initial Tutor Session - $50</option>
                   <option>3-Credit Bundle - $120</option>
@@ -145,12 +145,12 @@
                 </select>
               </div>
               <div>
-                <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant">Email</label>
-                <input class="w-full rounded-lg border-none bg-surface-container-lowest p-4 focus:ring-2 focus:ring-primary/10" name="email" placeholder="family@example.com" type="email" />
+                <label class="mb-2 block text-xs font-bold uppercase tracking-widest text-on-surface-variant" data-content="payment.text_index.24">Email</label>
+                <input class="w-full rounded-lg border-none bg-surface-container-lowest p-4 focus:ring-2 focus:ring-primary/10" name="email" data-content-placeholder="payment.placeholders_index.4" placeholder="family@example.com" type="email" />
               </div>
             </div>
             <button class="flex w-full items-center justify-center gap-2 rounded-xl bg-primary py-4 font-bold text-white shadow-md transition-all hover:shadow-lg" type="submit">
-              Save Secure Profile
+              <span data-content="payment.text_index.25">Save Secure Profile</span>
             </button>
             <p class="text-sm text-secondary" data-billing-status></p>
           </div>
@@ -159,8 +159,8 @@
         <section>
           <div class="mb-8 flex items-end justify-between">
             <div>
-              <h4 class="text-2xl font-bold text-primary">Payment Safety</h4>
-              <p class="text-sm text-on-surface-variant">What happens when a family checks out.</p>
+              <h4 class="text-2xl font-bold text-primary" data-content="payment.headers_index.7">Payment Safety</h4>
+              <p class="text-sm text-on-surface-variant" data-content="payment.subtext_index.5">What happens when a family checks out.</p>
             </div>
           </div>
           <div class="overflow-hidden rounded-xl bg-surface-container-lowest shadow-sm">
@@ -184,6 +184,7 @@
     </main>
 
     <script src="assets/scripts/config.js"></script>
+    <script src="assets/scripts/content-index.js"></script>
     <script src="assets/scripts/common.js"></script>
     <script src="assets/scripts/payment.js"></script>
   </body>

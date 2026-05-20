@@ -12,13 +12,15 @@
   <body class="bg-surface font-body text-on-surface flex items-center justify-center min-h-screen">
     <div class="text-center p-8 max-w-md">
       <h1 class="text-9xl font-black text-primary mb-4">404</h1>
-      <h2 class="text-2xl font-bold text-secondary mb-6">Oops! Page not found</h2>
-      <p class="text-on-surface-variant mb-10">
+      <h2 class="text-2xl font-bold text-secondary mb-6" data-content="notFound.headers_index.0">Oops! Page not found</h2>
+      <p class="text-on-surface-variant mb-10" data-content="notFound.subtext_index.0">
         The academic resource you are looking for has moved or no longer exists.
       </p>
-      <a href="landing.html" class="rounded-xl bg-primary px-8 py-4 font-bold text-white shadow-lg transition-all hover:bg-primary-container inline-block">
+      <a href="landing.html" class="rounded-xl bg-primary px-8 py-4 font-bold text-white shadow-lg transition-all hover:bg-primary-container inline-block" data-content="notFound.text_index.0">
         Back to TuNet Home
       </a>
     </div>
+    <script src="assets/scripts/content-index.js"></script>
+    <script src="assets/scripts/common.js"></script>
   </body>
 </html>

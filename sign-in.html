@@ -24,68 +24,71 @@
     <main class="mx-auto flex min-h-screen max-w-6xl items-center px-6 py-12 lg:px-10">
       <section class="grid w-full gap-8 lg:grid-cols-[1.15fr_0.85fr]">
         <div class="rounded-[2rem] hero-gradient p-8 text-white lg:p-12">
-          <p class="text-sm font-bold uppercase tracking-[0.3em] text-secondary-fixed">Student Access</p>
-            <h1 class="mt-6 text-4xl font-extrabold tracking-tight lg:text-6xl">Register securely and start booking tutoring.</h1>
-            <p class="mt-6 max-w-xl text-lg text-primary-fixed">
+          <p class="text-sm font-bold uppercase tracking-[0.3em] text-secondary-fixed" data-content="signin.headers_index.0">Student Access</p>
+          <h1 class="mt-6 text-4xl font-extrabold tracking-tight lg:text-6xl" data-content="signin.headers_index.1">Register securely and start booking tutoring.</h1>
+          <p class="mt-6 max-w-xl text-lg text-primary-fixed" data-content="signin.subtext_index.0">
             TuNet uses Supabase Auth for protected accounts and Stripe Checkout for payment, so families never enter card data into this site.
           </p>
           <div class="mt-10 grid gap-4 sm:grid-cols-2">
             <div class="rounded-2xl bg-white/10 p-5 backdrop-blur-md">
-              <p class="text-sm font-semibold">Dashboard access</p>
-              <p class="mt-2 text-sm text-primary-fixed">Email/password accounts are verified by Supabase before dashboard access.</p>
+              <p class="text-sm font-semibold" data-content="signin.headers_index.2">Dashboard access</p>
+              <p class="mt-2 text-sm text-primary-fixed" data-content="signin.subtext_index.1">Email/password accounts are verified by Supabase before dashboard access.</p>
             </div>
             <div class="rounded-2xl bg-white/10 p-5 backdrop-blur-md">
-              <p class="text-sm font-semibold">Course registration</p>
-              <p class="mt-2 text-sm text-primary-fixed">Save student preferences, tutoring package, and course details for follow-up.</p>
+              <p class="text-sm font-semibold" data-content="signin.headers_index.3">Course registration</p>
+              <p class="mt-2 text-sm text-primary-fixed" data-content="signin.subtext_index.2">Save student preferences, tutoring package, and course details for follow-up.</p>
             </div>
           </div>
         </div>
 
         <div class="auth-card rounded-[2rem] bg-white p-8 lg:p-10">
           <div class="mb-8">
-            <a class="text-sm font-semibold text-secondary hover:text-secondary-container" href="landing.html">Back to landing</a>
-            <h2 class="mt-4 text-3xl font-extrabold text-primary">Welcome back</h2>
-            <p class="mt-2 text-sm text-on-surface-variant">Create a parent/student account or sign in with an existing one.</p>
+            <a class="text-sm font-semibold text-secondary hover:text-secondary-container" href="landing.html" data-content="signin.text_index.0">Back to landing</a>
+            <h2 class="mt-4 text-3xl font-extrabold text-primary" data-content="signin.headers_index.4">Welcome back</h2>
+            <p class="mt-2 text-sm text-on-surface-variant" data-content="signin.subtext_index.3">Create a parent/student account or sign in with an existing one.</p>
           </div>
 
           <form class="space-y-5" data-sign-in-form>
             <label class="block">
-              <span class="mb-2 block text-xs font-bold uppercase tracking-[0.25em] text-on-surface-variant">Full Name</span>
+              <span class="mb-2 block text-xs font-bold uppercase tracking-[0.25em] text-on-surface-variant" data-content="signin.text_index.1">Full Name</span>
               <input
                 class="w-full rounded-2xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20"
                 name="name"
+                data-content-placeholder="signin.placeholders_index.0"
                 placeholder="Julian Barrington"
                 type="text"
               />
             </label>
             <label class="block">
-              <span class="mb-2 block text-xs font-bold uppercase tracking-[0.25em] text-on-surface-variant">Email</span>
+              <span class="mb-2 block text-xs font-bold uppercase tracking-[0.25em] text-on-surface-variant" data-content="signin.text_index.2">Email</span>
               <input
                 class="w-full rounded-2xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20"
                 name="email"
+                data-content-placeholder="signin.placeholders_index.1"
                 placeholder="julian@example.com"
                 type="email"
               />
             </label>
             <label class="block">
-              <span class="mb-2 block text-xs font-bold uppercase tracking-[0.25em] text-on-surface-variant">Password</span>
+              <span class="mb-2 block text-xs font-bold uppercase tracking-[0.25em] text-on-surface-variant" data-content="signin.text_index.3">Password</span>
               <input
                 class="w-full rounded-2xl border-none bg-surface-container-low p-4 focus:ring-2 focus:ring-primary/20"
                 name="password"
-                placeholder="Prototype only"
+                data-content-placeholder="signin.placeholders_index.2"
+                placeholder="Password"
                 type="password"
               />
             </label>
             <button class="w-full rounded-2xl bg-primary px-6 py-4 text-base font-bold text-white transition hover:bg-primary-container" type="submit">
-              Continue Securely
+              <span data-content="signin.text_index.4">Continue Securely</span>
             </button>
           </form>
 
           <p class="mt-5 min-h-6 text-sm text-secondary" data-sign-in-feedback></p>
 
           <div class="mt-8 rounded-2xl bg-surface-container-low p-5">
-            <p class="text-sm font-bold text-primary">Next step</p>
-            <p class="mt-2 text-sm text-on-surface-variant">
+            <p class="text-sm font-bold text-primary" data-content="signin.headers_index.5">Next step</p>
+            <p class="mt-2 text-sm text-on-surface-variant" data-content="signin.subtext_index.4">
               Payment is completed through Stripe Checkout. TuNet stores tutoring preferences, never raw card numbers.
             </p>
           </div>
@@ -94,6 +97,7 @@
     </main>
 
     <script src="assets/scripts/config.js"></script>
+    <script src="assets/scripts/content-index.js"></script>
     <script src="assets/scripts/common.js"></script>
     <script src="assets/scripts/sign-in.js"></script>
   </body>
